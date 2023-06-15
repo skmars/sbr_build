@@ -41,7 +41,7 @@ make up
 ```
   - if you use Windows OS:
 ```
-sudo docker compose -f docker-composel.yaml up -d
+docker compose -f docker-composel.yaml up -d
 ``` 
    
 2. Open <http://localhost:8000/docs>  to test API.
