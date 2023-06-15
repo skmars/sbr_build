@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+
+  #nginx service
+  web:
+    image: nginx:alpine
+    container_name: "web"
+    ports:
+      - "8082:80"
+    volumes:
+      - ./app/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - custom
+
+  # application service
+  app:
+    image: app
+    container_name: "app"
+    environment:
+      - MONGODB_URL=mongodb://mongo_db/saber_build
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo_db
+    restart: on-failure
+    networks:
+      - custom
+
+  # database service
+  mongo_db:
+    image: mongo
+    container_name: "mongo_db"
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge
