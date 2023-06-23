@@ -2,19 +2,31 @@
 
 This is a part of a Build System for GameDev for allowing machines to create builds automatically.
 
+
 #### *Table of contents*:
 <!-- toc -->
 
 - [Sbr Build Lite 🎮](#sbr-build-lite-)
       - [*Table of contents*:](#table-of-contents)
+  - [About](#about)
   - [Features](#features)
   - [Tools](#tools)
   - [Commands for local development with docker compose](#commands-for-local-development-with-docker-compose)
-  - [Few-words](#few-words)
+  - [*PS](#ps)
 <!-- tocstop -->
 
 ---
+
+## About
+
+There are two files in 'builds' directory
+ - In first we have objects *builds* consist of tasks to builds. 
+ - In second we have objects *tasks* consit of depependant tasks.
+We need to get all build tasks. And we have one condition: tasks can't be completed before all it's dependencies.
+
+
 ## Features
+
 Sort build related tasks regarding the condition the task cannot be completed before all its dependencies.
 
 **API endpoint:**
@@ -52,10 +64,5 @@ As an example:
 }
 
 ```   
-   
-## Few-words
-
-*Here we have a simple example of my sort of "hometask"*.
-*Of course one could spent much more time to make this micro-microservice much more stable, extensible and covered by more tests.*
-*But I was really excited to make it and at least few words from you guyes will be appriciated.*
-*And no matter what, wish you all the best, stay safe and sound!* 💫
+## *PS
+ It's a small test-microservice to build up.
